@@ -1,0 +1,82 @@
+h1 {
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-image: linear-gradient(
+    to right,
+    #e44968,
+    #ed49c4,
+    #b26cc2,
+    #9d56d2,
+    #8440e1,
+    #6028f0,
+    #0000ff
+  );
+}
+
+.calc {
+  /* Выровнял по центру основной блок */
+  margin-right: auto;
+  margin-left: auto;
+  /* Установил ширину и высоту + закруглил края блока */
+  width: 300px;
+  height: 500px;
+  border-radius: 20px;
+  background: #000;
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  /* Установил внутренние отступы 18px и сделал тень */
+  padding: 18px;
+  box-shadow: 4px 4px #6028f0;
+}
+
+.calc-screen {
+    height: 125px;
+}
+
+.buttons {
+  /* При помощи grid явно распределил кнопки внутри .calc */
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "clear plus minus delete"
+    "seven eight nine multi"
+    "four five six division"
+    "one two three secret-cat"
+    "percent zero dot equal";
+    justify-items: center;
+}
+
+.btn {
+  border: 1px solid black;
+  background-color: rgba(169, 169, 169, 0.386);
+  color: white;
+  border-radius: 14px;
+  width: 60px;
+  height: 60px;
+  font-family: "Courier New", Courier, monospace;
+  /* rem 1.5 == 16px */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+  /* Поменял вид курсора */
+  cursor:pointer;
+  /*Текст внутри кнопки не выделяется мышкой*/
+  user-select: none;
+}
+
+
+.btn:hover {
+  filter: brightness(130%);
+}
+
+.btn:active {
+  filter: brightness(70%);
+}
+
+.btn.bg-orange {
+  background: orange;
+  color:#000
+}
