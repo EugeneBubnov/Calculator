@@ -32,7 +32,19 @@ body {
 }
 
 .calc-screen {
-    height: 125px;
+  height: 125px;
+  background: whitesmoke;
+  color: #000;
+  padding: 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 4rem; /* 16px * 4rem =  64*/
+  text-align: right;
 }
 
 .buttons {
@@ -45,7 +57,7 @@ body {
     "four five six division"
     "one two three secret-cat"
     "percent zero dot equal";
-    justify-items: center;
+  justify-items: center;
 }
 
 .btn {
@@ -56,17 +68,15 @@ body {
   width: 60px;
   height: 60px;
   font-family: "Courier New", Courier, monospace;
-  /* rem 1.5 == 16px */
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   line-height: 60px;
   /* Поменял вид курсора */
-  cursor:pointer;
+  cursor: pointer;
   /*Текст внутри кнопки не выделяется мышкой*/
   user-select: none;
 }
-
 
 .btn:hover {
   filter: brightness(130%);
@@ -78,5 +88,5 @@ body {
 
 .btn.bg-orange {
   background: orange;
-  color:#000
+  color: #000;
 }
