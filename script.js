@@ -4,7 +4,7 @@ let o = ""; //operator
 let finish = false;
 
 const digit = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
-const operator = ["+", "-", "×", "÷", "%"]; //C, delete, secret-cat
+const operator = ["+", "-", "×", "÷", "%"]; // delete, secret-cat
 
 //Display
 const out = document.querySelector(".calc-screen p");
@@ -17,40 +17,47 @@ function clearAll() {
   out.textContent = 0;
 }
 
-const clear = document.querySelector(".btn.clear");
-clear.onclick = () => {
-  console.log("Clear push");
+document.querySelector(".btn.clear").onclick = () => {
+  console.log("0");
   clearAll();
 };
-
+//Все действия происходят в классе buttons;
 document.querySelector(".buttons").onclick = (event) => {
   //Pressed not button
   if (!event.target.classList.contains("btn")) return;
   //Pressed clear button
   if (event.target.classList.contains("clear")) return;
-  //get current button
+  //Получить значение нажатой кнопки
   const key = event.target.textContent;
-  // out.textContent = "";
-  //if 0-9 or ., add value to a and print on the screen;
+  //Если список диджит содержит значение нажатой кнопки, то выполняется след блок команд внутри if
   if (digit.includes(key)) {
     //Если 2 число пустое и оператор не выбран, заполняем 1 число
     if (b === "" && o === "") {
       a += key;
       out.textContent = a;
       console.log(a);
-      //Если а и б + финиш не пустые, то
+    /*
+    Если оператор а и б заполнены и finish = true(результат получен), 
+    то а остаётся со значением предыдущего результата, а б принимает новое значение.cer
+    а финиш обновляется, т.е. ждёт получения нового результата для переменной а.
+    */
     } else if (a !== "" && b !== "" && finish) {
       b = key;
       finish = false;
       out.textContent = b;
       console.log(b);
-    } else {
+    } 
+    // Ввод второго числа после выбора первого и нажатия по оператору
+    else {
       b += key;
       out.textContent = b;
       console.log(b);
     }
   }
-  //if pressed operator, add value to o
+  /*
+  Если список операторов содержит значение выбранного оператора, то о примет это значение.
+  return помогает выйти из блока выполнения условий.
+  */
   if (operator.includes(key)) {
     o = key;
     out.textContent = o;
@@ -83,7 +90,7 @@ document.querySelector(".buttons").onclick = (event) => {
         break;
       case "%":
         a = (num_a / num_b) * 100;
-        out.textContent = a;
+       
         break;
     }
     finish = true;
@@ -91,5 +98,3 @@ document.querySelector(".buttons").onclick = (event) => {
     console.log(a, b, o);
   }
 };
-
-//Получение нажатой кнопки

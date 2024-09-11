@@ -43,8 +43,13 @@ body {
 p {
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
-  font-size: 4rem; /* 16px * 4rem =  64*/
+  font-size: 4rem; /* 16px * 4rem =  64px */
   text-align: right;
+
+  /* Костыль для ограничения отображения огромных чисел, которые вылезают из экрана калькулятора */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;  
 }
 
 .buttons {
@@ -78,10 +83,11 @@ p {
   user-select: none;
 }
 
+/* Подсветка кнопки при наведении */
 .btn:hover {
   filter: brightness(130%);
 }
-
+/* Затемнение при нажатии */
 .btn:active {
   filter: brightness(70%);
 }
