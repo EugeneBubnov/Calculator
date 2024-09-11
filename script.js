@@ -21,6 +21,11 @@ document.querySelector(".btn.clear").onclick = () => {
   console.log("0");
   clearAll();
 };
+
+document.querySelector(".btn.secret-cat").onclick = ()=>{
+    console.log('Cat!');
+    out.textContent = "^о‿о^";
+}
 //Все действия происходят в классе buttons;
 document.querySelector(".buttons").onclick = (event) => {
   //Pressed not button
@@ -64,6 +69,7 @@ document.querySelector(".buttons").onclick = (event) => {
     return;
   }
 
+  //Если нажато =, то переменные преобразуются в number и в зависимости от оператора выполняется вычисление.
   if (key === "=") {
     let num_a = Number(a);
     let num_b = Number(b);
@@ -90,7 +96,6 @@ document.querySelector(".buttons").onclick = (event) => {
         break;
       case "%":
         a = (num_a / num_b) * 100;
-       
         break;
     }
     finish = true;

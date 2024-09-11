@@ -33,8 +33,11 @@ body {
 
 .calc-screen {
   height: 125px;
+  /*
   background: whitesmoke;
   color: #000;
+  */
+  color: #fff;
   padding: 10px;
   border-radius: 20px;
   margin-bottom: 10px;
@@ -49,7 +52,7 @@ p {
   /* Костыль для ограничения отображения огромных чисел, которые вылезают из экрана калькулятора */
   overflow: hidden;
   white-space: nowrap;
-  text-overflow:ellipsis;  
+  text-overflow: ellipsis;
 }
 
 .buttons {
@@ -60,8 +63,8 @@ p {
     "clear plus minus delete"
     "seven eight nine multi"
     "four five six division"
-    "one two three secret-cat"
-    "percent zero dot equal";
+    "one two three percent"
+    "secret-cat zero dot equal";
   justify-items: center;
 }
 
@@ -95,4 +98,24 @@ p {
 .btn.bg-orange {
   background: orange;
   color: #000;
+}
+
+.btn.bg-grey {
+  background: lightgray;
+  color: #000;
+}
+
+.btn.bg-red {
+  background: rgb(241, 66, 66);
+  color: #000;
+}
+
+.btn.bg-blue {
+  background: rgb(103, 196, 227);
+  color: #000;
+}
+
+.btn.secret-cat {
+  background-image: url("/images/cat.png");
+  background-size: cover;
 }
