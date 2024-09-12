@@ -4,7 +4,6 @@ let operator = "";
 let finish = false;
 
 const digit = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
-//const operators = ["+", "-", "×", "÷", "%"]; // delete, secret-cat
 const operators = {
   Plus: "+",
   Minus: "-",
@@ -54,19 +53,19 @@ document.querySelector(".btn.delete").onclick = () => {
 };
 
 function sum(a, b) {
-  return a + b;
+  return +a + +b;
 }
 
 function minus(a, b) {
-  return a - b;
+  return +a - +b;
 }
 
 function multiply(a, b) {
-  return a * b;
+  return +a * +b;
 }
 
 function division(a, b) {
-  return a / b;
+  return +a / +b;
 }
 
 function percentage(percent, total) {
@@ -115,33 +114,29 @@ document.querySelector(".buttons").onclick = (event) => {
 
   //Если = уже нажали, то переменные преобразуются в number и в зависимости от оператора выполняется вычисление.
   if (key === "=") {
-    let num_a = Number(first);
-    let num_b = Number(second);
-
     if (second === "") second = first;
-
     switch (operator) {
       case operators.Plus:
-        first = sum(num_a, num_b);
+        first = sum(first, second);
         break;
       case operators.Minus:
-        first = minus(num_a, num_b);
+        first = minus(first, second);
         break;
       case operators.Multi:
-        first = multiply(num_a, num_b);
+        first = multiply(first, second);
         break;
       case operators.Division:
-        if (num_b === 0) {
+        if (second === "0") {
           out.textContent = "ERROR";
           first = "";
           second = "";
           operator = "";
           return;
         }
-        first = division(num_a, num_b);
+        first = division(first, second);
         break;
       case operators.Percent:
-        first = percentage(num_a, num_b);
+        first = percentage(first, second);
         break;
     }
 
