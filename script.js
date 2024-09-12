@@ -22,10 +22,35 @@ document.querySelector(".btn.clear").onclick = () => {
   clearAll();
 };
 
-document.querySelector(".btn.secret-cat").onclick = ()=>{
-    console.log('Cat!');
-    out.textContent = "^о‿о^";
+document.querySelector(".btn.secret-cat").onclick = () => {
+  console.log("Cat!");
+  out.textContent = "^о‿о^";
+};
+
+let charArray;
+let popped_char;
+document.querySelector(".btn.delete").onclick = () => {
+  if (b === "" && finish === false) {
+    charArray = a.split("");
+    popped_char = charArray.pop();
+    a = charArray.join().toString().replaceAll(",", "");
+    out.textContent = a;
+  } else if (a !== "" && finish === false) {
+    charArray = b.split("");
+    popped_char = charArray.pop();
+    b = charArray.join().toString().replaceAll(",", "");
+    out.textContent = b;
+  } else  { //TODO:сделать возможность удалять из результата(a)
+    charArray = a.split("");
+    popped_char = charArray.pop();
+    a = charArray.join().toString().replaceAll(",", "");
+  }
+};
+
+function percentage(percent, total) {
+  return ((percent/ 100) * total).toFixed(2)
 }
+
 //Все действия происходят в классе buttons;
 document.querySelector(".buttons").onclick = (event) => {
   //Pressed not button
@@ -41,7 +66,7 @@ document.querySelector(".buttons").onclick = (event) => {
       a += key;
       out.textContent = a;
       console.log(a);
-    /*
+      /*
     Если оператор а и б заполнены и finish = true(результат получен), 
     то а остаётся со значением предыдущего результата, а б принимает новое значение.cer
     а финиш обновляется, т.е. ждёт получения нового результата для переменной а.
@@ -51,7 +76,7 @@ document.querySelector(".buttons").onclick = (event) => {
       finish = false;
       out.textContent = b;
       console.log(b);
-    } 
+    }
     // Ввод второго числа после выбора первого и нажатия по оператору
     else {
       b += key;
@@ -69,11 +94,13 @@ document.querySelector(".buttons").onclick = (event) => {
     return;
   }
 
-  //Если нажато =, то переменные преобразуются в number и в зависимости от оператора выполняется вычисление.
+  //Если = уже нажали, то переменные преобразуются в number и в зависимости от оператора выполняется вычисление.
   if (key === "=") {
     let num_a = Number(a);
     let num_b = Number(b);
+
     if (b === "") b = a;
+
     switch (o) {
       case "+":
         a = num_a + num_b;
@@ -95,10 +122,12 @@ document.querySelector(".buttons").onclick = (event) => {
         a = num_a / num_b;
         break;
       case "%":
-        a = (num_a / num_b) * 100;
+        a = percentage(num_a, num_b);
         break;
     }
+
     finish = true;
+    a = String(a);
     out.textContent = a;
     console.log(a, b, o);
   }
